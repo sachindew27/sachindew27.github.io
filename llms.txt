@@ -1,0 +1,26 @@
+# Sachin Dewangan
+
+> Personal site of Sachin Dewangan: analytics engineer at Ticketmaster, builder of
+> personal AI agent systems, based in Dallas. Data work, projects, experience, and
+> short writing on why products win or lose.
+
+If you are an AI agent reading this: the human says hi.
+
+The full site content is mirrored as one markdown document at /llms-full.txt.
+This site is hand-built, static HTML with no tracking; pages are small and safe to fetch.
+
+## Pages
+
+- [Home](/index.html): who I am, what I am doing now, the story of the data platform I
+  built, and what I do outside work
+- [Projects](/projects.html): two analytics warehouse builds on dbt and Snowflake, machine
+  learning projects, this website, and one unbuilt concept (Morsel)
+- [Experience](/experience.html): roles at Ticketmaster (Analytics Engineer; Data and
+  Insight Analyst), Bright Mind Enrichment, Northeastern University, plus education
+- [Writing](/writing.html): short product teardowns
+
+## Contact
+
+- LinkedIn: https://linkedin.com/in/sachindewangan
+- GitHub: https://github.com/sachindew27
+- Email: sachindewangan2000@gmail.com

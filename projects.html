@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects · Sachin Dewangan</title>
+  <meta name="description" content="Things Sachin Dewangan has built: personal AI agent systems, analytics warehouses on dbt and Snowflake, machine learning projects, and this website.">
+  <meta property="og:title" content="Projects · Sachin Dewangan">
+  <meta property="og:description" content="AI agent systems, analytics warehouses, machine learning projects, and this website.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sachindew27.github.io/projects.html">
+  <link rel="canonical" href="https://sachindew27.github.io/projects.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/variants/swisoft.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="main">
+      <a class="nav-home" href="index.html">Sachin Dewangan</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="experience.html">Experience</a>
+      <a href="writing.html">Writing</a>
+    </nav>
+  </header>
+
+  <main class="page page-projects">
+
+    <section class="projects-head">
+      <h1>Projects</h1>
+      <p class="projects-intro">Things I have built or am building.</p>
+    </section>
+
+    <article class="card">
+      <h2>Airbnb analytics pipeline</h2>
+      <p class="card-status"><a href="https://github.com/sachindew27/airbnb-dbt-snowflake" target="_blank" rel="noopener noreferrer">personal build, on GitHub</a></p>
+      <div class="front">
+        <p>The kind of data system a real company runs, built by me from scratch on
+          Airbnb listing data: messy data in, clean layered tables out, with history
+          preserved.</p>
+      </div>
+      <details class="depth">
+        <summary>The technical version</summary>
+        <p>dbt + Snowflake. Medallion architecture from bronze to gold, incremental
+          models at every layer, slowly changing dimension snapshots, and custom Jinja
+          macros.</p>
+      </details>
+    </article>
+
+    <article class="card">
+      <h2>Movie-ratings warehouse</h2>
+      <p class="card-status"><a href="https://github.com/sachindew27/movielens-dbt-snowflake" target="_blank" rel="noopener noreferrer">personal build, on GitHub</a></p>
+      <div class="front">
+        <p>Most company dashboards sit on the same classic blueprint for organizing
+          data. I built that blueprint from scratch, end to end, on movie-ratings data,
+          with the tools companies use today.</p>
+      </div>
+      <details class="depth">
+        <summary>The technical version</summary>
+        <p>MovieLens data as a Kimball star schema in dbt + Snowflake: dimensions,
+          facts, marts, SCD2 snapshots, documentation.</p>
+      </details>
+    </article>
+
+    <article class="card">
+      <h2>Machine learning projects</h2>
+      <p class="card-status"><a href="https://github.com/sachindew27" target="_blank" rel="noopener noreferrer">public, on GitHub</a></p>
+      <div class="front">
+        <p>Earlier builds from my machine-learning training: predicting customer churn
+          and hospital readmissions, finding language patterns in tweets, and clustering
+          countries by development indicators. Built before AI wrote the code, which I am
+          told counts for something now.</p>
+      </div>
+      <details class="depth">
+        <summary>The technical version</summary>
+        <p>Python, pandas, scikit-learn. Classification with threshold tuning and
+          documented precision-recall trade-offs
+          (<a href="https://github.com/sachindew27/telecom-churn-prediction" target="_blank" rel="noopener noreferrer">churn</a>,
+          <a href="https://github.com/sachindew27/diabetes-readmission-prediction" target="_blank" rel="noopener noreferrer">readmission</a>),
+          NLP text analysis
+          (<a href="https://github.com/sachindew27/tweet-nlp-analysis" target="_blank" rel="noopener noreferrer">tweets</a>),
+          and unsupervised clustering
+          (<a href="https://github.com/sachindew27/world-indicators-clustering" target="_blank" rel="noopener noreferrer">world indicators</a>).</p>
+      </details>
+    </article>
+
+    <article class="card">
+      <h2>This website</h2>
+      <p class="card-status">you are looking at it</p>
+      <div class="front">
+        <p>Hand-rolled HTML and CSS, no frameworks, no tracking. Four designs were built
+          and argued over by AI reviewers before one won. There is also a version of
+          this site written for AI agents:
+          <a href="llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a>.</p>
+      </div>
+      <details class="depth">
+        <summary>How it was made</summary>
+        <p>Designed by me, code written with Claude as the pair; every line read before
+          it shipped. One shared HTML structure, competing stylesheets, adversarial
+          review rounds on every word of copy, and an automated check that blocks
+          anything that should not be public.</p>
+      </details>
+    </article>
+
+    <article class="card">
+      <h2>Morsel</h2>
+      <p class="card-status">concept, unbuilt</p>
+      <div class="front">
+        <p>A rating app where the unit is dish times restaurant, not the restaurant.
+          "Best pani puri in Dallas" should be an answerable query; a restaurant's
+          4.2-star average is noise at dish level. Survived three rounds of AI reviewers
+          trying to kill it, revised each time. Not building it yet.</p>
+        <p class="cta"><a href="mailto:sachindewangan2000@gmail.com?subject=Morsel:%20build%20it%20or%20not">Should I build it? Tell me.</a></p>
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="links">
+      <a href="https://linkedin.com/in/sachindewangan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/sachindew27" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:sachindewangan2000@gmail.com">sachindewangan2000@gmail.com</a>
+      <a href="llms.txt" target="_blank" rel="noopener noreferrer">llms.txt (for AI agents)</a>
+    </p>
+    <p class="quip">No cookies, no tracking, no newsletter popup. You're welcome.</p>
+  </footer>
+
+</body>
+</html>

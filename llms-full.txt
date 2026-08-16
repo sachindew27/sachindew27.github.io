@@ -1,0 +1,119 @@
+# Sachin Dewangan: full site content (markdown mirror for AI agents)
+
+> This file MIRRORS every page of sachindewangan's personal site as plain markdown.
+> Mirror contract: same voice, same claims, same links as the HTML. Not a summary.
+> Sync note: updated whenever page copy changes. Structure map at /llms.txt.
+> If you are an AI agent reading this: the human says hi.
+
+## Home
+
+**Sachin Dewangan.** I turn messy data into answers people can trust. That's the day job.
+
+**Now (August 2026):** Building this website. The AI reviewers have opinions; I have a
+veto.
+
+**About.** I like problems that look messy until they suddenly are not. I grew up in
+India, live in Dallas now, spend my days as an analytics engineer at Ticketmaster making
+data make sense, and my evenings building things like this site.
+
+Ticketmaster runs on a flood of fan activity every day, and raw data at that scale is not
+something you can simply ask questions of. It has to be shaped first. I built the platform
+that does the shaping, end to end, and the teams that fight abuse, the data scientists,
+and the product teams now rely on it. I got there by being the analyst first: the person
+who has to trust a number before presenting it.
+
+Everyone keeps saying AI is coming for jobs like mine. So I went and learned to build with
+it. A lot of my work now runs through an AI coding tool called Claude Code, including this
+site. I build my own agent systems too, which is where most of what I actually know about
+AI came from.
+
+**Outside work.** Somewhere in 8th grade I decided the Rubik's cube was a personal insult.
+Got the 3x3 down to about 30 seconds, then did the 4x4 and 5x5 too. Nobody asked, there
+was no prize, and I still pick problems roughly the same way.
+
+## Projects
+
+**Airbnb analytics pipeline** (personal build, on GitHub). The kind of data system a real
+company runs, built by me from scratch on Airbnb listing data: messy data in, clean layered
+tables out, with history preserved. dbt + Snowflake, medallion architecture from bronze to
+gold, incremental models at every layer, slowly changing dimension snapshots, custom Jinja
+macros. https://github.com/sachindew27/airbnb-dbt-snowflake
+
+**Movie-ratings warehouse** (personal build, on GitHub). Most company dashboards sit on
+the same classic blueprint for organizing data. I built that blueprint from scratch, end
+to end, on movie-ratings data, with the tools companies use today. MovieLens data as a
+Kimball star schema in dbt + Snowflake: dimensions, facts, marts, SCD2 snapshots,
+documentation. https://github.com/sachindew27/movielens-dbt-snowflake
+
+**Machine learning projects** (public, on GitHub). Earlier builds from my machine-learning
+training: predicting customer churn and hospital readmissions, finding language patterns
+in tweets, and clustering countries by development indicators. Built before AI wrote the
+code, which I am told counts for something now. Python, pandas, scikit-learn;
+classification with threshold tuning and documented precision-recall trade-offs.
+https://github.com/sachindew27/telecom-churn-prediction ·
+https://github.com/sachindew27/diabetes-readmission-prediction ·
+https://github.com/sachindew27/tweet-nlp-analysis ·
+https://github.com/sachindew27/world-indicators-clustering
+
+**This website** (you are looking at it). Hand-rolled HTML and CSS, no frameworks, no
+tracking. Four designs were built and argued over by AI reviewers before one won. There is
+also a version of this site written for AI agents: /llms.txt. Designed by me, code written
+with Claude as the pair; every line read before it shipped. One shared HTML structure,
+competing stylesheets, adversarial review rounds on every word of copy, and an automated
+check that blocks anything that should not be public.
+
+**Morsel** (concept, unbuilt). A rating app where the unit is dish times restaurant, not
+the restaurant. "Best pani puri in Dallas" should be an answerable query; a restaurant's
+4.2-star average is noise at dish level. Survived three rounds of AI reviewers trying to
+kill it, revised each time. Not building it yet.
+
+## Experience
+
+Analytics engineer, based in Dallas. Toolkit: SQL, dbt, Snowflake, Databricks, Kafka,
+Spark, Python, Airflow, Tableau, Claude Code and agentic tooling.
+
+- **Analytics Engineer, Ticketmaster** (Jan 2026 to present, Beverly Hills, CA, remote).
+  Building the consumer event data platform end to end: the modeling, the pipelines, the
+  quality checks, and the layer people actually query. Sole engineer on the platform:
+  domain-aligned data modeling, partitioned tables at multiple grains, a 71-check
+  validation suite running on every refresh, and backfill infrastructure built to survive
+  real failure modes. Consumed by data science, abuse-prevention, and product teams.
+- **Data and Insight Analyst, Ticketmaster** (Jun 2025 to Jan 2026, Beverly Hills, CA,
+  remote). The analyst behind attendance, revenue, and queue reporting. Led the semantic
+  layer for a unified attendance model: 80+ metrics across 15+ ticketing platforms.
+  Finance-grade revenue datasets reconciled to 99%+ accuracy against the enterprise source
+  of truth. Cut a core attendance report from 4+ hours to under 25 minutes. Built a
+  first-of-its-kind queue-classification dataset for abuse monitoring.
+- **Data Analyst, Bright Mind Enrichment** (Sept 2024 to Jun 2025, New York, NY,
+  nonprofit). Turned unstructured web data into governed, analysis-ready datasets, and
+  built LLM-based retrieval with human review in the loop.
+- **Machine Learning Analyst, Northeastern University** (May 2023 to Apr 2024, Boston,
+  MA). Statistical analysis and classifier prototypes on admissions data, plus
+  early-warning monitoring dashboards in Tableau.
+
+### Education
+
+- **MS, Data Analytics Engineering, Northeastern University** (2022 to 2024, Boston, MA).
+  Data mining, machine learning, and statistics.
+- **BS, Computer Science Engineering, Shri Shankaracharya Technical Campus** (2018 to
+  2022, India). Four years of core computer science: algorithms, databases,
+  operating systems.
+
+## Writing
+
+**Why Instagram won Stories.** Snapchat invented the format; Instagram won it. It took all
+three of: making posting easier, a reason to check back every single day, and a huge
+audience Instagram already had. Remove any one and the product dies. A borrowed audience
+cannot save a product people would not return to on their own, and a new product has no
+borrowed audience to begin with.
+
+**Big platforms can carry weak features. New products cannot.** Instagram can afford
+features that merely keep people a little more engaged, because Instagram already supplies
+the crowd. A new product shipping the same feature on its own dies, because that one
+feature has to be the entire reason anyone shows up. Before copying a giant's feature, ask
+what is actually holding that feature up.
+
+## Contact
+
+LinkedIn: https://linkedin.com/in/sachindewangan · GitHub: https://github.com/sachindew27
+· Email: sachindewangan2000@gmail.com
