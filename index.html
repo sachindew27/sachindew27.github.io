@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
   <title>Sachin Dewangan · Analytics Engineer</title>
   <meta name="description" content="Sachin Dewangan, analytics engineer at Ticketmaster. I turn messy data into answers people can trust. Projects, experience, and writing.">
   <meta property="og:title" content="Sachin Dewangan · Analytics Engineer">
@@ -11,10 +12,20 @@
   <meta property="og:url" content="https://sachindew27.github.io/">
   <link rel="canonical" href="https://sachindew27.github.io/">
   <meta name="twitter:card" content="summary">
+  <script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+  </script>
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/variants/swisoft.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <nav class="site-nav" aria-label="main">
@@ -22,10 +33,45 @@
       <a href="projects.html">Projects</a>
       <a href="experience.html">Experience</a>
       <a href="writing.html">Writing</a>
+      <a href="now.html">Now</a>
+      <button class="theme-toggle" type="button" hidden>Theme:&nbsp;<span class="theme-word">Auto</span></button>
     </nav>
+    <span class="visually-hidden" role="status" id="theme-status"></span>
   </header>
 
-  <main class="page page-home">
+  <script>
+  (function () {
+    var doc = document.documentElement;
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
+    var word = btn.querySelector('.theme-word');
+    var status = document.getElementById('theme-status');
+    function current() {
+      var t = doc.getAttribute('data-theme');
+      return t === 'light' || t === 'dark' ? t : null;
+    }
+    function paint(t) {
+      word.textContent = t === 'dark' ? 'Dark' : t === 'light' ? 'Light' : 'Auto';
+    }
+    function apply(t) {
+      if (t) { doc.setAttribute('data-theme', t); } else { doc.removeAttribute('data-theme'); }
+      try { t ? localStorage.setItem('theme', t) : localStorage.removeItem('theme'); } catch (e) {}
+      paint(t);
+      if (status) status.textContent = 'Theme: ' + (t || 'auto, follows your device');
+    }
+    paint(current());
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      var t = current();
+      var dark = matchMedia('(prefers-color-scheme: dark)').matches;
+      var opp = dark ? 'light' : 'dark';
+      var same = dark ? 'dark' : 'light';
+      apply(t === null ? opp : t === opp ? same : null);
+    });
+  })();
+  </script>
+
+  <main id="main" class="page page-home">
 
     <section class="hero">
       <h1 class="hero-name">Sachin Dewangan</h1>
@@ -33,9 +79,12 @@
         That's the day job.</p>
     </section>
 
-    <section class="now">
-      <h2>Now <span class="now-date">(August 2026)</span></h2>
-      <p>Building this website. The AI reviewers have opinions; I have a veto.</p>
+    <section class="now teaser">
+      <h2>Lately</h2>
+      <p>Rebuilt this site with motion and a dark mode. The AI reviewers had opinions
+        again; the veto held.</p>
+      <p>There is more: a few photos from ordinary days, and a Siberian husky
+        named Whiskey. <a href="now.html">See the Now page</a></p>
     </section>
 
     <section class="about">
@@ -62,9 +111,200 @@
       <h2>Outside work</h2>
       <article class="interest cubes">
         <p>Somewhere in 8th grade I decided the Rubik's cube was a personal insult. Got
-          the 3x3 down to about 30 seconds, then did the 4x4 and 5x5 too. Nobody asked,
-          there was no prize, and I still pick problems roughly the same way.</p>
+          the 3x3 down to about 30 seconds, then did the 4x4 and 5x5 too. None of this has ever been useful, which I notice hasn't stopped me from putting it on a website.</p>
+        <div class="cube-slot" id="cube-slot">
+          <img class="cube-poster" src="img/cube-poster.png" width="600" height="600"
+               loading="lazy" decoding="async" alt="">
+        </div>
+        <button class="cube-toggle" id="cube-toggle" type="button" hidden aria-expanded="false" aria-controls="cube-slot">Give it a spin</button>
+        <div class="cube-keys" id="cube-keys" hidden>
+          <div class="cube-keys-row" id="cube-keys-row"></div>
+          <p class="cube-keys-note">Shift reverses a turn. Click a key, press a new
+            one to rebind. <button class="cube-keys-reset" id="cube-keys-reset" type="button">Reset keys</button></p>
+        </div>
       </article>
+
+      <script>
+      (function () {
+        var slot = document.getElementById('cube-slot');
+        var btn = document.getElementById('cube-toggle');
+        if (!slot || !btn) return;
+        var poster = slot.querySelector('.cube-poster');
+        var keysWrap = document.getElementById('cube-keys');
+        var keysRow = document.getElementById('cube-keys-row');
+        var keysReset = document.getElementById('cube-keys-reset');
+        var GROW = 'Give it a spin';
+        var SHRINK = "That's enough cube";
+        var NO_GL = 'The cube needs WebGL 2, and this browser says no';
+        var api = null;
+        var loading = false;
+        var dead = false;
+        var big = false;
+        var listening = null;
+
+        function setBig(want) {
+          big = want;
+          slot.classList.toggle('is-big', big);
+          btn.setAttribute('aria-expanded', big ? 'true' : 'false');
+          btn.textContent = big ? SHRINK : GROW;
+          if (api) { if (big) { api.expand(); slot.focus({ preventScroll: true }); } else { api.collapse(); } }
+        }
+
+        var GLYPHS = { ArrowLeft: '←', ArrowRight: '→', ArrowUp: '↑', ArrowDown: '↓' };
+
+        function keyName(code) {
+          if (code === undefined || code === null) return '?';
+          if (GLYPHS[code]) return GLYPHS[code];
+          return String(code).replace(/^Key/, '').replace(/^Digit/, '');
+        }
+
+        function readBindings(K) {
+          var raw = {};
+          if (typeof K.getBindings === 'function') raw = K.getBindings();
+          else if (typeof K.get === 'function') raw = K.get();
+          var flat = {};
+          Object.keys(raw).forEach(function (k) {
+            var v = raw[k];
+            if (v && typeof v === 'object') {
+              Object.keys(v).forEach(function (id) { flat[id] = v[id]; });
+            } else {
+              flat[k] = v;
+            }
+          });
+          return flat;
+        }
+
+        function actionList(K) {
+          var raw = K.actions;
+          var out = [];
+          if (raw && typeof raw.forEach === 'function') {
+            raw.forEach(function (a) {
+              if (typeof a === 'string') {
+                out.push({ id: a, label: a });
+              } else if (a) {
+                var id = a.id || a.name || a.action;
+                out.push({ id: id, label: a.label || id });
+              }
+            });
+          } else if (raw) {
+            Object.keys(raw).forEach(function (k) {
+              var v = raw[k];
+              out.push({ id: k, label: typeof v === 'string' ? v : (v && v.label) || k });
+            });
+          }
+          return out;
+        }
+
+        function stopListening() {
+          if (listening === null) return;
+          document.removeEventListener('keydown', listening.onKey, true);
+          listening.chip.classList.remove('is-listening');
+          listening.kbd.textContent = listening.prev;
+          listening = null;
+        }
+
+        function flash(chip) {
+          chip.classList.add('is-clash');
+          setTimeout(function () { chip.classList.remove('is-clash'); }, 450);
+        }
+
+        function refocus(id) {
+          var kids = keysRow.children;
+          for (var i = 0; i < kids.length; i++) {
+            if (kids[i].getAttribute('data-action') === id) { kids[i].focus(); return; }
+          }
+        }
+
+        function listen(K, chip, kbd, id) {
+          var again = listening !== null && listening.chip === chip;
+          stopListening();
+          if (again) return;
+          function onKey(e) {
+            if (e.key === 'Tab') { stopListening(); return; }
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.key === 'Escape') { stopListening(); return; }
+            if (e.key === 'Shift' || e.key === 'Control' || e.key === 'Alt' || e.key === 'Meta') return;
+            var accepted = typeof K.set === 'function' ? K.set(id, e.code) : false;
+            if (accepted === false) { flash(chip); return; }
+            stopListening();
+            renderChips(K);
+            refocus(id);
+          }
+          listening = { chip: chip, kbd: kbd, prev: kbd.textContent, onKey: onKey };
+          chip.classList.add('is-listening');
+          kbd.textContent = '...';
+          document.addEventListener('keydown', onKey, true);
+        }
+
+        function renderChips(K) {
+          var bound = readBindings(K);
+          keysRow.replaceChildren();
+          actionList(K).forEach(function (a) {
+            var chip = document.createElement('button');
+            chip.type = 'button';
+            chip.className = 'cube-key';
+            chip.setAttribute('data-action', a.id);
+            var act = document.createElement('span');
+            act.className = 'cube-key-act';
+            act.textContent = a.label;
+            var kbd = document.createElement('kbd');
+            kbd.textContent = keyName(bound[a.id]);
+            chip.append(act, kbd);
+            chip.addEventListener('click', function () { listen(K, chip, kbd, a.id); });
+            keysRow.append(chip);
+          });
+        }
+
+        function showKeys() {
+          var K = api.keys;
+          if (K === undefined || K === null) return;
+          if (actionList(K).length === 0) return;
+          renderChips(K);
+          keysWrap.hidden = false;
+        }
+
+        function boot(res) {
+          loading = false;
+          if (res && res.ok) {
+            api = res;
+            slot.setAttribute('tabindex', '0');
+            slot.setAttribute('role', 'application');
+            slot.setAttribute('aria-label', 'Interactive Rubik\'s cube. Cube keys turn faces, arrow keys spin it, Escape shrinks it.');
+            slot.addEventListener('pointerdown', function () { slot.focus({ preventScroll: true }); });
+            setBig(true);
+            showKeys();
+            slot.focus({ preventScroll: true });
+          } else {
+            dead = true;
+            btn.textContent = NO_GL;
+            btn.disabled = true;
+          }
+        }
+
+        function wake() {
+          if (dead || loading) return;
+          if (api) { setBig(big === false); return; }
+          loading = true;
+          btn.textContent = 'Waking the cube';
+          import('./js/cube.js').then(function (mod) {
+            return mod.initCube(slot);
+          }).then(boot, function () { boot(null); });
+        }
+
+        btn.addEventListener('click', wake);
+        if (poster) poster.addEventListener('click', wake);
+        keysReset.addEventListener('click', function () {
+          stopListening();
+          var K = api === null ? null : api.keys;
+          if (K && typeof K.reset === 'function') { K.reset(); renderChips(K); }
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && big) setBig(false);
+        });
+        btn.hidden = false;
+      })();
+      </script>
     </section>
 
     <section class="teaser">
@@ -81,7 +321,7 @@
 
     <section class="teaser">
       <h2>Writing</h2>
-      <p>Short pieces on why products win or lose, plus questions I have not resolved.
+      <p>Short pieces on why products win or lose, plus the occasional idea I picked up and could not leave alone.
         <a href="writing.html">Read the writing</a></p>
     </section>
 

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
   <title>Experience · Sachin Dewangan</title>
   <meta name="description" content="Sachin Dewangan's professional record: analytics engineering and analysis at Ticketmaster, a nonprofit data role, a university research lab, and education.">
   <meta property="og:title" content="Experience · Sachin Dewangan">
@@ -11,10 +12,20 @@
   <meta property="og:url" content="https://sachindew27.github.io/experience.html">
   <link rel="canonical" href="https://sachindew27.github.io/experience.html">
   <meta name="twitter:card" content="summary">
+  <script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+  </script>
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/variants/swisoft.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <nav class="site-nav" aria-label="main">
@@ -22,10 +33,45 @@
       <a href="projects.html">Projects</a>
       <a href="experience.html" aria-current="page">Experience</a>
       <a href="writing.html">Writing</a>
+      <a href="now.html">Now</a>
+      <button class="theme-toggle" type="button" hidden>Theme:&nbsp;<span class="theme-word">Auto</span></button>
     </nav>
+    <span class="visually-hidden" role="status" id="theme-status"></span>
   </header>
 
-  <main class="page page-experience">
+  <script>
+  (function () {
+    var doc = document.documentElement;
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
+    var word = btn.querySelector('.theme-word');
+    var status = document.getElementById('theme-status');
+    function current() {
+      var t = doc.getAttribute('data-theme');
+      return t === 'light' || t === 'dark' ? t : null;
+    }
+    function paint(t) {
+      word.textContent = t === 'dark' ? 'Dark' : t === 'light' ? 'Light' : 'Auto';
+    }
+    function apply(t) {
+      if (t) { doc.setAttribute('data-theme', t); } else { doc.removeAttribute('data-theme'); }
+      try { t ? localStorage.setItem('theme', t) : localStorage.removeItem('theme'); } catch (e) {}
+      paint(t);
+      if (status) status.textContent = 'Theme: ' + (t || 'auto, follows your device');
+    }
+    paint(current());
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      var t = current();
+      var dark = matchMedia('(prefers-color-scheme: dark)').matches;
+      var opp = dark ? 'light' : 'dark';
+      var same = dark ? 'dark' : 'light';
+      apply(t === null ? opp : t === opp ? same : null);
+    });
+  })();
+  </script>
+
+  <main id="main" class="page page-experience">
 
     <section class="projects-head">
       <h1>Experience</h1>
@@ -88,7 +134,7 @@
     </article>
 
     <section class="projects-head">
-      <h1>Education</h1>
+      <h2>Education</h2>
     </section>
 
     <article class="card">

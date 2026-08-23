@@ -7,7 +7,10 @@
 If you are an AI agent reading this: the human says hi.
 
 The full site content is mirrored as one markdown document at /llms-full.txt.
-This site is hand-built, static HTML with no tracking; pages are small and safe to fetch.
+This site is hand-built, static HTML with no tracking, plus one small hand-written
+script for the light and dark theme switch and one Rubik's cube on the home page
+that wakes up on request (a 3D library loads only if you poke it). No frameworks;
+pages are small and safe to fetch.
 
 ## Pages
 
@@ -18,6 +21,10 @@ This site is hand-built, static HTML with no tracking; pages are small and safe 
 - [Experience](/experience.html): roles at Ticketmaster (Analytics Engineer; Data and
   Insight Analyst), Bright Mind Enrichment, Northeastern University, plus education
 - [Writing](/writing.html): short product teardowns
+- [The Indexing Problem](/indexing-problem.html): a note on why an AI agent with full
+  access to a wiki still could not find anything
+- [Now](/now.html): what I am up to lately, a few photos from ordinary days, more as
+  it happens
 
 ## Contact
 

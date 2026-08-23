@@ -9,8 +9,9 @@
 
 **Sachin Dewangan.** I turn messy data into answers people can trust. That's the day job.
 
-**Now (August 2026):** Building this website. The AI reviewers have opinions; I have a
-veto.
+**Lately:** Rebuilt this site with motion and a dark mode. The AI reviewers had opinions
+again; the veto held. There is more: a few photos from ordinary days, and a
+Siberian husky named Whiskey: see the Now page at /now.html.
 
 **About.** I like problems that look messy until they suddenly are not. I grew up in
 India, live in Dallas now, spend my days as an analytics engineer at Ticketmaster making
@@ -28,8 +29,8 @@ site. I build my own agent systems too, which is where most of what I actually k
 AI came from.
 
 **Outside work.** Somewhere in 8th grade I decided the Rubik's cube was a personal insult.
-Got the 3x3 down to about 30 seconds, then did the 4x4 and 5x5 too. Nobody asked, there
-was no prize, and I still pick problems roughly the same way.
+Got the 3x3 down to about 30 seconds, then did the 4x4 and 5x5 too. None of this has ever been useful, which I notice hasn't stopped me from putting it on a website. A Rubik's
+cube on the home page wakes on request; the 3D library loads only then.
 
 ## Projects
 
@@ -55,12 +56,14 @@ https://github.com/sachindew27/diabetes-readmission-prediction ·
 https://github.com/sachindew27/tweet-nlp-analysis ·
 https://github.com/sachindew27/world-indicators-clustering
 
-**This website** (you are looking at it). Hand-rolled HTML and CSS, no frameworks, no
-tracking. Four designs were built and argued over by AI reviewers before one won. There is
-also a version of this site written for AI agents: /llms.txt. Designed by me, code written
-with Claude as the pair; every line read before it shipped. One shared HTML structure,
-competing stylesheets, adversarial review rounds on every word of copy, and an automated
-check that blocks anything that should not be public.
+**This website** (you are looking at it). Hand-rolled HTML, CSS, a little JavaScript for
+the theme switch, and one Rubik's cube that wakes up on request (a 3D library loads only
+if you poke it). No frameworks, no tracking. Four designs were built and argued over
+by AI reviewers before one won. There is also a version of this site written for AI
+agents: /llms.txt. Designed by me, code written with Claude as the pair; every line read
+before it shipped. One shared HTML structure, competing stylesheets, adversarial review
+rounds on every word of copy, and an automated check that blocks anything that should not
+be public. The motion went through the same reviewers; most of it did not survive.
 
 **Morsel** (concept, unbuilt). A rating app where the unit is dish times restaurant, not
 the restaurant. "Best pani puri in Dallas" should be an answerable query; a restaurant's
@@ -101,6 +104,9 @@ Spark, Python, Airflow, Tableau, Claude Code and agentic tooling.
 
 ## Writing
 
+Short pieces on why products win or lose, plus the occasional idea I picked up somewhere
+and could not leave alone.
+
 **Why Instagram won Stories.** Snapchat invented the format; Instagram won it. It took all
 three of: making posting easier, a reason to check back every single day, and a huge
 audience Instagram already had. Remove any one and the product dies. A borrowed audience
@@ -112,6 +118,57 @@ features that merely keep people a little more engaged, because Instagram alread
 the crowd. A new product shipping the same feature on its own dies, because that one
 feature has to be the entire reason anyone shows up. Before copying a giant's feature, ask
 what is actually holding that feature up.
+
+**The Indexing Problem** (a note; its own page at /indexing-problem.html). Why an AI agent
+with full access to a wiki still couldn't find anything. Full text:
+
+This one didn't start in my head. The idea came from a thread I read on X. It stuck,
+because of what happened when I pointed an AI agent at a big internal wiki and asked it to
+find things. The agent could read every page perfectly. It could not find the right pages.
+I ended up walking it through the space by hand, which is not what anyone means by
+automation.
+
+The easy diagnosis is "search is bad." I don't think that's it. The agent could open
+anything. It just had no idea what existed. That's a discoverability problem, not a search
+problem. A city where every street sign is readable but no map exists is still a city you
+get lost in. And yes, wikis have sidebars, which are technically indexes. A tree of bare
+titles is a hallway of unlabeled doors.
+
+The hypothesis, and this is the borrowed part: wikis and PDFs are built for human
+navigation. Click, scroll, skim, search by gut. Markdown is built for traversal. Plain
+text, grep-able, linkable, readable in one pass. So moving a knowledge base from wiki
+pages to markdown isn't a tooling preference. It changes the information architecture
+into something an agent can actually move around in.
+
+I run my own notes this way. One markdown repo, an index at the top, a one-line
+description on every file, explicit links between related notes, and small convention
+files that say what goes where. Sample size of one, and the one is me, so take it
+accordingly. But I do move faster in that system, mostly because the agent stops needing
+a tour guide.
+
+"Document everything" isn't the answer either. Noise buries things about as well as
+absence does. So the better question isn't markdown versus wiki. It's what makes a pile
+of documents navigable by an agent at all. My current list has four things on it. A map:
+one index that says what exists. Scent, to borrow the information-foraging term: a
+one-line description on everything, so relevance can be judged without opening the file.
+Edges: real links between related things. Boundaries: written rules about what lives
+where. None of the four is "markdown." The structure does the work. The format is just
+what it's written on.
+
+The part I can't settle: when the agent failed in that wiki, was the content bad or was
+the map bad? Export the whole space to markdown, keep the structure, add no index. Does
+the agent suddenly do fine? The answer changes what the actual problem is, and I don't
+have it yet.
+
+How this page got made: The AI reviewers have opinions; I have a veto.
+
+## Now
+
+Most of this site is about things I have built. This page is about everything else. A few
+photos from ordinary days, for now; more when there is more.
+
+**Photos, with their captions.** Met this Siberian husky. His name is Whiskey. · He fell
+asleep mid-pet. · Mid-yawn. · Malai kulfi, made at home.
 
 ## Contact
 

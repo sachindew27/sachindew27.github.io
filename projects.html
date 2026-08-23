@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
   <title>Projects · Sachin Dewangan</title>
   <meta name="description" content="Things Sachin Dewangan has built: personal AI agent systems, analytics warehouses on dbt and Snowflake, machine learning projects, and this website.">
   <meta property="og:title" content="Projects · Sachin Dewangan">
@@ -11,10 +12,20 @@
   <meta property="og:url" content="https://sachindew27.github.io/projects.html">
   <link rel="canonical" href="https://sachindew27.github.io/projects.html">
   <meta name="twitter:card" content="summary">
+  <script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+  </script>
   <link rel="stylesheet" href="styles/reset.css">
   <link rel="stylesheet" href="styles/variants/swisoft.css">
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <nav class="site-nav" aria-label="main">
@@ -22,10 +33,45 @@
       <a href="projects.html" aria-current="page">Projects</a>
       <a href="experience.html">Experience</a>
       <a href="writing.html">Writing</a>
+      <a href="now.html">Now</a>
+      <button class="theme-toggle" type="button" hidden>Theme:&nbsp;<span class="theme-word">Auto</span></button>
     </nav>
+    <span class="visually-hidden" role="status" id="theme-status"></span>
   </header>
 
-  <main class="page page-projects">
+  <script>
+  (function () {
+    var doc = document.documentElement;
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
+    var word = btn.querySelector('.theme-word');
+    var status = document.getElementById('theme-status');
+    function current() {
+      var t = doc.getAttribute('data-theme');
+      return t === 'light' || t === 'dark' ? t : null;
+    }
+    function paint(t) {
+      word.textContent = t === 'dark' ? 'Dark' : t === 'light' ? 'Light' : 'Auto';
+    }
+    function apply(t) {
+      if (t) { doc.setAttribute('data-theme', t); } else { doc.removeAttribute('data-theme'); }
+      try { t ? localStorage.setItem('theme', t) : localStorage.removeItem('theme'); } catch (e) {}
+      paint(t);
+      if (status) status.textContent = 'Theme: ' + (t || 'auto, follows your device');
+    }
+    paint(current());
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      var t = current();
+      var dark = matchMedia('(prefers-color-scheme: dark)').matches;
+      var opp = dark ? 'light' : 'dark';
+      var same = dark ? 'dark' : 'light';
+      apply(t === null ? opp : t === opp ? same : null);
+    });
+  })();
+  </script>
+
+  <main id="main" class="page page-projects">
 
     <section class="projects-head">
       <h1>Projects</h1>
@@ -89,9 +135,11 @@
       <h2>This website</h2>
       <p class="card-status">you are looking at it</p>
       <div class="front">
-        <p>Hand-rolled HTML and CSS, no frameworks, no tracking. Four designs were built
-          and argued over by AI reviewers before one won. There is also a version of
-          this site written for AI agents:
+        <p>Hand-rolled HTML, CSS, a little JavaScript for the theme switch, and one
+          Rubik's cube that wakes up on request (a 3D library loads only if you poke
+          it). No frameworks, no tracking. Four designs were built and argued over by
+          AI reviewers before one won. There is also a version of this site written
+          for AI agents:
           <a href="llms.txt" target="_blank" rel="noopener noreferrer">llms.txt</a>.</p>
       </div>
       <details class="depth">
@@ -99,7 +147,8 @@
         <p>Designed by me, code written with Claude as the pair; every line read before
           it shipped. One shared HTML structure, competing stylesheets, adversarial
           review rounds on every word of copy, and an automated check that blocks
-          anything that should not be public.</p>
+          anything that should not be public. The motion went through the same
+          reviewers; most of it did not survive.</p>
       </details>
     </article>
 

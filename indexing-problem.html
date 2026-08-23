@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>The Indexing Problem · Sachin Dewangan</title>
+  <meta name="description" content="Why an AI agent with full access to a wiki still could not find anything, and what makes a body of documents navigable at all.">
+  <meta property="og:title" content="The Indexing Problem · Sachin Dewangan">
+  <meta property="og:description" content="Why an AI agent with full access to a wiki still could not find anything, and what makes a body of documents navigable at all.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sachindew27.github.io/indexing-problem.html">
+  <link rel="canonical" href="https://sachindew27.github.io/indexing-problem.html">
+  <meta name="twitter:card" content="summary">
+  <script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+  </script>
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/variants/swisoft.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="site-nav" aria-label="main">
+      <a class="nav-home" href="index.html">Sachin Dewangan</a>
+      <a href="projects.html">Projects</a>
+      <a href="experience.html">Experience</a>
+      <a href="writing.html">Writing</a>
+      <a href="now.html">Now</a>
+      <button class="theme-toggle" type="button" hidden>Theme:&nbsp;<span class="theme-word">Auto</span></button>
+    </nav>
+    <span class="visually-hidden" role="status" id="theme-status"></span>
+  </header>
+
+  <script>
+  (function () {
+    var doc = document.documentElement;
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
+    var word = btn.querySelector('.theme-word');
+    var status = document.getElementById('theme-status');
+    function current() {
+      var t = doc.getAttribute('data-theme');
+      return t === 'light' || t === 'dark' ? t : null;
+    }
+    function paint(t) {
+      word.textContent = t === 'dark' ? 'Dark' : t === 'light' ? 'Light' : 'Auto';
+    }
+    function apply(t) {
+      if (t) { doc.setAttribute('data-theme', t); } else { doc.removeAttribute('data-theme'); }
+      try { t ? localStorage.setItem('theme', t) : localStorage.removeItem('theme'); } catch (e) {}
+      paint(t);
+      if (status) status.textContent = 'Theme: ' + (t || 'auto, follows your device');
+    }
+    paint(current());
+    btn.hidden = false;
+    btn.addEventListener('click', function () {
+      var t = current();
+      var dark = matchMedia('(prefers-color-scheme: dark)').matches;
+      var opp = dark ? 'light' : 'dark';
+      var same = dark ? 'dark' : 'light';
+      apply(t === null ? opp : t === opp ? same : null);
+    });
+  })();
+  </script>
+
+  <main id="main" class="page page-projects">
+
+    <nav class="piece-back" aria-label="back to writing">
+      <a href="writing.html">&#8592; Writing</a>
+    </nav>
+
+    <section class="projects-head piece-head">
+      <h1>The Indexing Problem</h1>
+      <p class="card-status">note</p>
+      <p class="standfirst">Why an AI agent with full access to a wiki still
+        couldn't find anything.</p>
+    </section>
+
+    <article class="card piece-body" id="indexing-problem">
+      <p>This one didn't start in my head. The idea came from a thread I read on X.
+        It stuck, because of what happened when I pointed an AI agent at a big
+        internal wiki and asked it to find things. The agent could read every page
+        perfectly. It could not find the right pages. I ended up walking it through
+        the space by hand, which is not what anyone means by automation.</p>
+
+      <p>The easy diagnosis is "search is bad." I don't think that's it. The agent
+        could open anything. It just had no idea what existed. That's a
+        discoverability problem, not a search problem. A city where every street
+        sign is readable but no map exists is still a city you get lost in. And
+        yes, wikis have sidebars, which are technically indexes. A tree of bare
+        titles is a hallway of unlabeled doors.</p>
+
+      <p>The hypothesis, and this is the borrowed part: wikis and PDFs are built
+        for human navigation. Click, scroll, skim, search by gut. Markdown is
+        built for traversal. Plain text, grep-able, linkable, readable in one
+        pass. So moving a knowledge base from wiki pages to markdown isn't a
+        tooling preference. It changes the information architecture into
+        something an agent can actually move around in.</p>
+
+      <p>I run my own notes this way. One markdown repo, an index at the top, a
+        one-line description on every file, explicit links between related notes,
+        and small convention files that say what goes where. Sample size of one,
+        and the one is me, so take it accordingly. But I do move faster in that
+        system, mostly because the agent stops needing a tour guide.</p>
+
+      <p>"Document everything" isn't the answer either. Noise buries things about
+        as well as absence does. So the better question isn't markdown versus
+        wiki. It's what makes a pile of documents navigable by an agent at all.
+        My current list has four things on it. A map: one index that says what
+        exists. Scent, to borrow the information-foraging term: a one-line
+        description on everything, so relevance can be judged without opening the
+        file. Edges: real links between related things. Boundaries: written rules
+        about what lives where. None of the four is "markdown." The
+        structure does the work. The format is just what it's written on.</p>
+
+      <p>The part I can't settle: when the agent failed in that wiki, was the
+        content bad or was the map bad? Export the whole space to markdown, keep
+        the structure, add no index. Does the agent suddenly do fine? The answer
+        changes what the actual problem is, and I don't have it yet.</p>
+
+      <p class="piece-note">How this page got made: The AI reviewers have opinions;
+        I have a veto.</p>
+
+      <p class="piece-end"><a class="cta" href="writing.html">&#8592; Back to Writing</a></p>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="links">
+      <a href="https://linkedin.com/in/sachindewangan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/sachindew27" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:sachindewangan2000@gmail.com">sachindewangan2000@gmail.com</a>
+      <a href="llms.txt" target="_blank" rel="noopener noreferrer">llms.txt (for AI agents)</a>
+    </p>
+    <p class="quip">No cookies, no tracking, no newsletter popup. You're welcome.</p>
+  </footer>
+
+</body>
+</html>

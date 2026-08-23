@@ -1,6 +1,6 @@
 # sachindew27.github.io
 
-My personal website: hand-written HTML and CSS, no frameworks, no build step,
+My personal website: hand-written HTML and CSS plus a little hand-written JavaScript, no frameworks, no build step,
 no tracking.
 
 Live at https://sachindew27.github.io
