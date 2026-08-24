@@ -17,7 +17,8 @@ pages are small and safe to fetch.
 - [Home](/index.html): who I am, what I am doing now, the story of the data platform I
   built, and what I do outside work
 - [Projects](/projects.html): two analytics warehouse builds on dbt and Snowflake, machine
-  learning projects, this website, and one unbuilt concept (Morsel)
+  learning projects, Superflip (a keyboard-driven cube you can play), this website, and one
+  unbuilt concept (Morsel)
 - [Experience](/experience.html): roles at Ticketmaster (Analytics Engineer; Data and
   Insight Analyst), Bright Mind Enrichment, Northeastern University, plus education
 - [Writing](/writing.html): short product teardowns
@@ -25,6 +26,13 @@ pages are small and safe to fetch.
   access to a wiki still could not find anything
 - [Now](/now.html): what I am up to lately, a few photos from ordinary days, more as
   it happens
+
+## Elsewhere
+
+- [Superflip](https://sachindew27.github.io/superflip/): a separate site of mine. A
+  Rubik's-style cube you speedsolve from the keyboard, with WCA scrambles, a timer, and
+  local solve history. Nothing leaves the browser. Source:
+  https://github.com/sachindew27/superflip
 
 ## Contact
 

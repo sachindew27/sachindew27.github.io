@@ -30,7 +30,10 @@ AI came from.
 
 **Outside work.** Somewhere in 8th grade I decided the Rubik's cube was a personal insult.
 Got the 3x3 down to about 30 seconds, then did the 4x4 and 5x5 too. None of this has ever been useful, which I notice hasn't stopped me from putting it on a website. A Rubik's
-cube on the home page wakes on request; the 3D library loads only then.
+cube on the home page wakes on request; the 3D library loads only then. So I built it a
+stopwatch. Superflip is the same cube driven from the keyboard: real scrambles, a timer that
+starts on your first turn, and every solve kept. The one on this page does not keep time.
+https://sachindew27.github.io/superflip/
 
 **Reply.** You made it to the bottom, which is either interest or excellent procrastination.
 Liked something? Disagreed with something? Want to talk about something else entirely? Same
@@ -63,8 +66,26 @@ https://github.com/sachindew27/diabetes-readmission-prediction ·
 https://github.com/sachindew27/tweet-nlp-analysis ·
 https://github.com/sachindew27/world-indicators-clustering
 
+**Superflip** (live, playable in the browser). A Rubik's-style cube you solve from the
+keyboard, one key per turn. It scrambles itself the way a competition does, starts the clock
+on your first turn, stops the moment the cube is solved, and keeps every solve so you can
+watch yourself get slower under pressure. No account, no server, nothing leaves your browser.
+Vanilla ES modules, no build step, three.js vendored. Cube state is integer permutation math
+with no DOM in reach; the renderer runs behind the model and collapses queued turns under
+load, so input latency does not depend on the frame budget and the renderer cannot corrupt a
+solve. Solved-detection is exact up to whole-cube rotation, so the clock stops on the turn
+that finishes the solve rather than the turn that happens to match a canonical layout.
+Scrambles are WCA random-state, the competition standard, from cubing.js, with a local
+fallback that labels itself when the module does not arrive. Averages follow the WCA trimmed
+rule with DNF semantics carried through Ao5, Ao12 and best-average records. Two keyboard
+presets, every action rebindable and persisted, JSON export and import, and every solve kept
+as a full move log in standard notation with per-move timestamps. 162 assertions cover the
+move algebra, the averages, and the real modules in a real browser. The source is public and
+MIT licensed. Play: https://sachindew27.github.io/superflip/ · Source:
+https://github.com/sachindew27/superflip
+
 **This website** (you are looking at it). Hand-rolled HTML, CSS, a little JavaScript for
-the theme switch, and one Rubik's cube that wakes up on request (a 3D library loads only
+the theme switch, and a cube on the home page that wakes up on request (a 3D library loads only
 if you poke it). No frameworks, no tracking. Four designs were built and argued over
 by AI reviewers before one won. There is also a version of this site written for AI
 agents: /llms.txt. Designed by me, code written with Claude as the pair; every line read
