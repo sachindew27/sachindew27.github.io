@@ -32,7 +32,14 @@ AI came from.
 Got the 3x3 down to about 30 seconds, then did the 4x4 and 5x5 too. None of this has ever been useful, which I notice hasn't stopped me from putting it on a website. A Rubik's
 cube on the home page wakes on request; the 3D library loads only then.
 
+**Reply.** You made it to the bottom, which is either interest or excellent procrastination.
+Liked something? Disagreed with something? Want to talk about something else entirely? Same
+address either way. There is no calendar link, you will have to type.
+sachindewangan2000@gmail.com
+
 ## Projects
+
+Things I have built or am building. The unbuilt ones are at the bottom, still arguments.
 
 **Airbnb analytics pipeline** (personal build, on GitHub). The kind of data system a real
 company runs, built by me from scratch on Airbnb listing data: messy data in, clean layered
@@ -63,7 +70,9 @@ by AI reviewers before one won. There is also a version of this site written for
 agents: /llms.txt. Designed by me, code written with Claude as the pair; every line read
 before it shipped. One shared HTML structure, competing stylesheets, adversarial review
 rounds on every word of copy, and an automated check that blocks anything that should not
-be public. The motion went through the same reviewers; most of it did not survive.
+be public. The motion went through the same reviewers; most of it did not survive. The
+source is public, in case any of that sounds like a claim:
+https://github.com/sachindew27/sachindew27.github.io
 
 **Morsel** (concept, unbuilt). A rating app where the unit is dish times restaurant, not
 the restaurant. "Best pani puri in Dallas" should be an answerable query; a restaurant's
@@ -159,6 +168,9 @@ The part I can't settle: when the agent failed in that wiki, was the content bad
 the map bad? Export the whole space to markdown, keep the structure, add no index. Does
 the agent suddenly do fine? The answer changes what the actual problem is, and I don't
 have it yet.
+
+If you have run that experiment, I would like to know what happened. If you think the four
+are wrong, that works too. sachindewangan2000@gmail.com
 
 How this page got made: The AI reviewers have opinions; I have a veto.
 
