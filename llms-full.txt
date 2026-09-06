@@ -9,8 +9,10 @@
 
 **Sachin Dewangan.** I turn messy data into answers people can trust. That's the day job.
 
-**Lately:** Rebuilt this site with motion and a dark mode. The AI reviewers had opinions
-again; the veto held. There is more: a few photos from ordinary days, and a
+**Lately:** Counted the college degree programs that quietly stopped conferring: 28.3%
+of them, in years when the totals went up. The Degrees That Went Quiet:
+https://sachindew27.github.io/degrees-that-went-quiet/ Also rebuilt this site with motion
+and a dark mode. There is more: a few photos from ordinary days, and a
 Siberian husky named Whiskey: see the Now page at /now.html.
 
 **About.** I like problems that look messy until they suddenly are not. I grew up in
@@ -43,6 +45,31 @@ sachindewangan2000@gmail.com
 ## Projects
 
 Things I have built or am building. The unbuilt ones are at the bottom, still arguments.
+
+**The Degrees That Went Quiet** (live, on its own site). Colleges stop offering degree
+programs without announcing it. The federal completions data records it anyway, so I
+counted. Of the 169,578 degree and certificate programs conferring awards in 2013, 48,073
+had stopped by 2021, which is 28.3%. Over the same years the total number of programs grew
+by 1,759, so the net numbers show growth. Colleges going out of business covers less than a
+third of it, and at the schools that stayed open one program in five still stopped. Stopped
+means stopped conferring: a program awarded at least one degree or certificate in 2013 and
+then reported zero awards in 2021, 2022 and 2023, three silent years, not one. That is
+observed award activity, not registrar paperwork, and a program can sit in a catalog for
+years after its last graduate. Of the 48,073, some 14,824 were at institutions that stopped
+filing with the Department of Education altogether, through closure, lost aid eligibility,
+or a merger into another reporting ID. The other 33,249 stopped at schools still reporting
+at the end of the window; restrict both sides of the fraction to those schools and it is
+33,249 of 154,754, or 21.5%. The 95% confidence interval on the headline is 28.1% to 28.6%.
+The standing objection is that a missing year can mean a registrar reported nothing, not
+that a program ended. That is measurable: apply the rule at a decision year in the past,
+using only what was known then, and check what actually happened next. About 4.6% of the
+stopped programs are expected to confer again, which moves the headline from 28.3% to
+27.0%. The finding shrinks. It does not go away. Source is IPEDS Completions, 2013 to 2023,
+revised files only: a provisional year is incomplete by construction, and every program
+missing from one would read as a stop. Every number is recomputable, the derived data ships
+with the page as plain JSON, and the code is public and MIT licensed. Read:
+https://sachindew27.github.io/degrees-that-went-quiet/ · Source:
+https://github.com/sachindew27/degrees-that-went-quiet
 
 **Airbnb analytics pipeline** (personal build, on GitHub). The kind of data system a real
 company runs, built by me from scratch on Airbnb listing data: messy data in, clean layered

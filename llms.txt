@@ -16,9 +16,10 @@ pages are small and safe to fetch.
 
 - [Home](/index.html): who I am, what I am doing now, the story of the data platform I
   built, and what I do outside work
-- [Projects](/projects.html): two analytics warehouse builds on dbt and Snowflake, machine
-  learning projects, Superflip (a keyboard-driven cube you can play), this website, and one
-  unbuilt concept (Morsel)
+- [Projects](/projects.html): The Degrees That Went Quiet (a federal-data count of the
+  college programs that stopped conferring), two analytics warehouse builds on dbt and
+  Snowflake, machine learning projects, Superflip (a keyboard-driven cube you can play),
+  this website, and one unbuilt concept (Morsel)
 - [Experience](/experience.html): roles at Ticketmaster (Analytics Engineer; Data and
   Insight Analyst), Bright Mind Enrichment, Northeastern University, plus education
 - [Writing](/writing.html): short product teardowns
@@ -29,6 +30,12 @@ pages are small and safe to fetch.
 
 ## Elsewhere
 
+- [The Degrees That Went Quiet](https://sachindew27.github.io/degrees-that-went-quiet/):
+  a separate site of mine. Of the 169,578 US college degree and certificate programs
+  conferring awards in 2013, 48,073 had stopped by 2021, which is 28.3%, over years when
+  the total number of programs grew by 1,759. Built from federal IPEDS Completions data,
+  2013 to 2023, revised files only. Every number is recomputable from the data published
+  alongside it. Source: https://github.com/sachindew27/degrees-that-went-quiet
 - [Superflip](https://sachindew27.github.io/superflip/): a separate site of mine. A
   Rubik's-style cube you speedsolve from the keyboard, with WCA scrambles, a timer, and
   local solve history. Nothing leaves the browser. Source:
