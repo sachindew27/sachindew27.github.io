@@ -96,7 +96,7 @@ https://github.com/sachindew27/world-indicators-clustering
 **Superflip** (live, playable in the browser). A Rubik's-style cube you solve from the
 keyboard, one key per turn. It scrambles itself the way a competition does, starts the clock
 on your first turn, stops the moment the cube is solved, and keeps every solve so you can
-watch yourself get slower under pressure. No account, no server, nothing leaves your browser.
+watch yourself get slower under pressure. No account, no server, and your solves stay on your device.
 Vanilla ES modules, no build step, three.js vendored. Cube state is integer permutation math
 with no DOM in reach; the renderer runs behind the model and collapses queued turns under
 load, so input latency does not depend on the frame budget and the renderer cannot corrupt a
@@ -113,7 +113,7 @@ https://github.com/sachindew27/superflip
 
 **This website** (you are looking at it). Hand-rolled HTML, CSS, a little JavaScript for
 the theme switch, and a cube on the home page that wakes up on request (a 3D library loads only
-if you poke it). No frameworks, no tracking. Four designs were built and argued over
+if you poke it). No frameworks, no cookies. Four designs were built and argued over
 by AI reviewers before one won. There is also a version of this site written for AI
 agents: /llms.txt. Designed by me, code written with Claude as the pair; every line read
 before it shipped. One shared HTML structure, competing stylesheets, adversarial review

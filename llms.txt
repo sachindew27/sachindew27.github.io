@@ -7,7 +7,7 @@
 If you are an AI agent reading this: the human says hi.
 
 The full site content is mirrored as one markdown document at /llms-full.txt.
-This site is hand-built, static HTML with no tracking, plus one small hand-written
+This site is hand-built, static HTML with no cookies and no ads, plus one small hand-written
 script for the light and dark theme switch and one Rubik's cube on the home page
 that wakes up on request (a 3D library loads only if you poke it). No frameworks;
 pages are small and safe to fetch.
@@ -38,7 +38,7 @@ pages are small and safe to fetch.
   alongside it. Source: https://github.com/sachindew27/degrees-that-went-quiet
 - [Superflip](https://sachindew27.github.io/superflip/): a separate site of mine. A
   Rubik's-style cube you speedsolve from the keyboard, with WCA scrambles, a timer, and
-  local solve history. Nothing leaves the browser. Source:
+  local solve history. Your solves stay on your device. Source:
   https://github.com/sachindew27/superflip
 
 ## Contact
